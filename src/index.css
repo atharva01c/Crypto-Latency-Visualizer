@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Crypto Trading Terminal Design System */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Cyber/Financial Theme */
+    --background: 222 84% 3%;
+    --foreground: 180 100% 90%;
+
+    --card: 222 84% 4%;
+    --card-foreground: 180 100% 90%;
+
+    --popover: 222 84% 4%;
+    --popover-foreground: 180 100% 90%;
+
+    /* Primary - Electric Cyan for Active Elements */
+    --primary: 180 100% 50%;
+    --primary-foreground: 222 84% 4%;
+    --primary-glow: 180 100% 60%;
+
+    /* Secondary - Deep Tech Blue */
+    --secondary: 220 70% 15%;
+    --secondary-foreground: 180 100% 90%;
+
+    /* Muted - Darker Grays for Backgrounds */
+    --muted: 222 84% 6%;
+    --muted-foreground: 180 20% 65%;
+
+    /* Accent - Bright Tech Accent */
+    --accent: 270 100% 70%;
+    --accent-foreground: 222 84% 4%;
+
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --success: 150 80% 50%;
+    --success-foreground: 222 84% 4%;
+    --warning: 45 100% 55%;
+    --warning-foreground: 222 84% 4%;
+
+    /* Network Latency Colors */
+    --latency-low: 150 80% 50%;
+    --latency-medium: 45 100% 55%;
+    --latency-high: 0 84% 60%;
+
+    /* Cloud Provider Colors */
+    --aws: 25 100% 55%;
+    --gcp: 220 100% 60%;
+    --azure: 205 100% 55%;
+
+    --border: 222 84% 8%;
+    --input: 222 84% 6%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Trading Terminal Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(180 100% 40%), hsl(180 100% 60%));
+    --gradient-cyber: linear-gradient(135deg, hsl(222 84% 4%), hsl(270 100% 20%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(180 100% 50% / 0.3), transparent 70%);
+    --gradient-latency: linear-gradient(90deg, hsl(150 80% 50%), hsl(45 100% 55%), hsl(0 84% 60%));
+
+    /* Terminal Effects */
+    --shadow-glow: 0 0 20px hsl(180 100% 50% / 0.3);
+    --shadow-cyber: 0 10px 30px hsl(222 84% 4% / 0.8);
+    --shadow-intense: 0 0 40px hsl(180 100% 50% / 0.5);
+
+    /* Animations */
+    --transition-cyber: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --pulse-speed: 2s;
+
+    --sidebar-background: 222 84% 4%;
+    --sidebar-foreground: 180 100% 90%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 222 84% 4%;
+    --sidebar-accent: 222 84% 6%;
+    --sidebar-accent-foreground: 180 100% 90%;
+    --sidebar-border: 222 84% 8%;
+    --sidebar-ring: 180 100% 50%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    overflow-x: hidden;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.5);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+}
+
+@layer components {
+  /* Cyber Glow Effects */
+  .cyber-glow {
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition-cyber);
+  }
+
+  .cyber-glow:hover {
+    box-shadow: var(--shadow-intense);
+  }
+
+  /* Terminal Grid Pattern */
+  .terminal-grid {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Latency Pulse Animation */
+  .latency-pulse {
+    animation: latency-pulse var(--pulse-speed) ease-in-out infinite;
+  }
+
+  /* Exchange Marker Styles */
+  .exchange-marker {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exchange-marker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
+    transition: left 0.5s;
+  }
+
+  .exchange-marker:hover::before {
+    left: 100%;
+  }
+
+  /* Status Indicators */
+  .status-low {
+    color: hsl(var(--latency-low));
+    text-shadow: 0 0 10px hsl(var(--latency-low) / 0.5);
+  }
+
+  .status-medium {
+    color: hsl(var(--latency-medium));
+    text-shadow: 0 0 10px hsl(var(--latency-medium) / 0.5);
+  }
+
+  .status-high {
+    color: hsl(var(--latency-high));
+    text-shadow: 0 0 10px hsl(var(--latency-high) / 0.5);
+  }
+
+  /* Cloud Provider Badges */
+  .aws-badge {
+    background: linear-gradient(135deg, hsl(var(--aws) / 0.2), hsl(var(--aws) / 0.1));
+    border: 1px solid hsl(var(--aws) / 0.3);
+    color: hsl(var(--aws));
+  }
+
+  .gcp-badge {
+    background: linear-gradient(135deg, hsl(var(--gcp) / 0.2), hsl(var(--gcp) / 0.1));
+    border: 1px solid hsl(var(--gcp) / 0.3);
+    color: hsl(var(--gcp));
+  }
+
+  .azure-badge {
+    background: linear-gradient(135deg, hsl(var(--azure) / 0.2), hsl(var(--azure) / 0.1));
+    border: 1px solid hsl(var(--azure) / 0.3);
+    color: hsl(var(--azure));
+  }
+}
+
+@layer utilities {
+  /* Custom Keyframes */
+  @keyframes latency-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes data-flow {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes cyber-scan {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes globe-rotate {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  /* Animation Classes */
+  .animate-data-flow {
+    animation: data-flow 3s ease-in-out infinite;
+  }
+
+  .animate-cyber-scan {
+    animation: cyber-scan 2s ease-in-out infinite;
+  }
+
+  .animate-globe {
+    animation: globe-rotate 30s linear infinite;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Terminal Border */
+  .terminal-border {
+    border: 1px solid hsl(var(--border));
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+    backdrop-filter: blur(10px);
+  }
+}
